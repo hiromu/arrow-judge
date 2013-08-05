@@ -8,7 +8,7 @@
 ## Installation
  * Install module with `python setup.py install`
  * Copy server.conf to /etc/arrow-judge
- * Run with `./arrow-judge start`
+ * Run with `arrow-judge start`
 
 ## Acknowledgement
 This project is supported by [IPA MITOH program](http://www.ipa.go.jp/english/humandev/third.html).
