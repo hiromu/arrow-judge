@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+import os
+import sys
+import uuid
+import logging
+import urllib
+import urllib2
+import traceback
+import ConfigParser
+from daemon import runner
+from arrow_judge.daemon import Daemon
+
+CONFIG = '/etc/arrow-judge/server.conf'
+SIGNATURE = '/etc/arrow-judge/signature'
+
+if __name__ == '__main__':
+	config = ConfigParser.SafeConfigParser()
+	config.read(CONFIG)
+
+	if not os.path.isfile(SIGNATURE) or os.path.getsize(SIGNATURE) == 0:
+		client_id = str(uuid.uuid4())
+		hostname = os.uname()[1]
+
+		error_log = logging.getLogger('arrow-judge')
+		error_log.setLevel(logging.WARN)
+		formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+		handler = logging.FileHandler(config.get('log', 'error_log').strip("'"))
+		handler.setFormatter(formatter)
+		error_log.addHandler(handler)
+
+		try:
+			fp = open(SIGNATURE, 'w')
+			fp.write(client_id)
+			fp.close()
+
+			param = {'data[Server][server]': client_id, 'data[Server][hostname]': hostname}
+			urllib2.urlopen(config.get('main', 'url') + '/servers/add', urllib.urlencode(param))
+		except urllib2.HTTPError, e:
+			error_log.error('HTTP Error %d: %s' % (e.code, e.msg))
+			line = e.fp.readline()
+			while line:
+				error_log.error(line.rstrip())
+				line = e.fp.readline()
+
+			os.remove(SIGNATURE)
+			sys.exit(1)
+		except:
+			trace = traceback.format_exc()
+			for line in trace.split('\n'):
+				error_log.error(line)
+
+			os.remove(SIGNATURE)
+			sys.exit(1)
+		else:
+			logging.shutdown()
+
+	log_handler = logging.FileHandler(config.get('log', 'log').strip("'"))
+	error_handler = logging.FileHandler(config.get('log', 'error_log').strip("'"))
+
+	client_id = open(SIGNATURE).read()
+	daemon = Daemon(config, client_id, log_handler, error_handler)
+	daemon_runner = runner.DaemonRunner(daemon)
+	daemon_runner.daemon_context.files_preserve = [log_handler.stream, error_handler.stream]
+	daemon_runner.do_action()

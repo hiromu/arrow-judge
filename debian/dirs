@@ -1,0 +1,3 @@
+etc/arrow-judge
+var/lib/arrow-judge
+var/log/arrow-judge

@@ -1,0 +1,17 @@
+Source: arrow-judge
+Maintainer: Hiromu Yakura <hiromu1996@gmail.com>
+Section: python
+Priority: optional
+Build-Depends: debhelper (>= 7),
+ python (>= 2.7),
+ python-support
+Standards-Version: 3.9.1
+
+Package: arrow-judge
+Architecture: all
+Depends: python-daemon,
+ ${misc:Depends},
+ ${python:Depends}
+Description: Arrow Judge is open source online judge system
+ Arrow-Judge is a open source online judge system, released under MIT License.
+ This package is the judge server part of Arrow-Judge.

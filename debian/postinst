@@ -1,0 +1,31 @@
+#!/bin/sh
+# postinst script for arrow-judge
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+case "$1" in
+    configure)
+	db_version 2.0
+	db_get arrow-judge/server
+	url=`echo $RET | sed -e 's/|/\\|/g'`
+	sed -i "s|^url =.*$|url = $url|" /etc/arrow-judge/server.conf
+
+	if [ -z "`id -u arrow-judge 2>/dev/null`" ]; then
+		useradd -d /var/log/arrow-judge -s /bin/false arrow-judge
+	fi
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

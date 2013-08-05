@@ -1,0 +1,2 @@
+server.conf	/etc/arrow-judge
+arrow-judge	/usr/sbin
