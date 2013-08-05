@@ -3,9 +3,10 @@ Maintainer: Hiromu Yakura <hiromu1996@gmail.com>
 Section: python
 Priority: optional
 Build-Depends: debhelper (>= 7),
+ po-debconf,
  python (>= 2.7),
  python-support
-Standards-Version: 3.9.1
+Standards-Version: 3.9.3
 
 Package: arrow-judge
 Architecture: all

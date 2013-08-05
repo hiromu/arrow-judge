@@ -1,6 +1,6 @@
 Template: arrow-judge/server
 Type: string
 Default: 
-Description: URL for Arrow-Judge web system:
+_description: URL for Arrow-Judge web system:
  This server system accesses Arrow-Judge web.
  You can modify this by editing /etc/arrow-judge/server.conf
