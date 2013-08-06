@@ -3,6 +3,7 @@
 
 import os
 import sys
+import stat
 import uuid
 import logging
 import urllib
@@ -55,6 +56,11 @@ if __name__ == '__main__':
 			sys.exit(1)
 		else:
 			logging.shutdown()
+
+	if os.stat(SIGNATURE).st_uid != os.getuid():
+		os.chown(SIGNATURE, os.getuid(), -1)
+	if os.stat(SIGNATURE).st_mode != stat.S_IFREG | stat.S_IRUSR | stat.S_IWUSR:
+		os.chmod(SIGNATURE, stat.S_IRUSR | stat.S_IWUSR)
 
 	log_handler = logging.FileHandler(config.get('log', 'log').strip("'"))
 	error_handler = logging.FileHandler(config.get('log', 'error_log').strip("'"))

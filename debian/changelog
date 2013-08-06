@@ -1,3 +1,9 @@
+arrow-judge (1.0.0-1ppa3) precise; urgency=low
+
+  * Fix bug that user can access to the signature (Closes: #0)
+
+ -- Hiromu Yakura <hiromu1996@gmail.com>  Tue, 06 Aug 2013 19:50:09 +0900
+
 arrow-judge (1.0.0-1ppa2) precise; urgency=low
 
   * Fix two bugs (Closes: #0)
