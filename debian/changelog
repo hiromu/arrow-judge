@@ -1,3 +1,9 @@
+arrow-judge (1.0.0-1ppa2) precise; urgency=low
+
+  * Fix two bugs (Closes: #0)
+
+ -- Hiromu Yakura <hiromu1996@gmail.com>  Tue, 06 Aug 2013 11:18:48 +0900
+
 arrow-judge (1.0.0-1ppa1) precise; urgency=low
 
   * Initial release (Closes: #0)

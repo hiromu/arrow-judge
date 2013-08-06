@@ -74,7 +74,7 @@ class Daemon():
 		directory = self.judge_dir + '/' + str(uuid.uuid4())
 		os.makedirs(directory)
 
-		self.judge_log.info('Judging: id = %d, directory = %s' % (params['id'], directory))
+		self.judge_log.info('Judging: id = %s, directory = %s' % (params['id'], directory))
 
 		try:
 			sandbox = SandBox(directory, self.judge_user, params)
