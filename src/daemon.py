@@ -108,4 +108,5 @@ class Daemon():
 				result = self.judge(params)
 				if result:
 					self.post(result)
+				continue
 			time.sleep(self.interval)

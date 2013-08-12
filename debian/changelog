@@ -1,3 +1,9 @@
+arrow-judge (1.0.0-1ppa4) precise; urgency=low
+
+  * Change not to sleep after judging (Closes: #0)
+
+ -- Hiromu Yakura <hiromu1996@gmail.com>  Tue, 13 Aug 2013 06:52:39 +0900
+
 arrow-judge (1.0.0-1ppa3) precise; urgency=low
 
   * Fix bug that user can access to the signature (Closes: #0)
