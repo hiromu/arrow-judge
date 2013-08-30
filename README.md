@@ -4,6 +4,7 @@
 
 ## Requirements
  * Python 2.7.x
+ * python-daemon (>= 1.5.5)
 
 ## Installation
  * Install module with `python setup.py install`

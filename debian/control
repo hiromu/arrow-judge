@@ -5,7 +5,7 @@ Priority: optional
 Build-Depends: debhelper (>= 7),
  po-debconf,
  python (>= 2.7),
- python-support
+ python-setuptools
 Standards-Version: 3.9.3
 
 Package: arrow-judge

@@ -1,3 +1,9 @@
+arrow-judge (1.0.1-1ppa1) precise; urgency=low
+
+  * Disable a home directory of judging user (Closes: #1)
+
+ -- Hiromu Yakura <hiromu1996@gmail.com>  Fri, 30 Aug 2013 10:03:09 +0900
+
 arrow-judge (1.0.0-1ppa4) precise; urgency=low
 
   * Change not to sleep after judging (Closes: #0)

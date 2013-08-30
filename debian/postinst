@@ -13,7 +13,7 @@ case "$1" in
 	sed -i "s|^url =.*$|url = $url|" /etc/arrow-judge/server.conf
 
 	if [ -z "`id -u arrow-judge 2>/dev/null`" ]; then
-		useradd -d /var/log/arrow-judge -s /bin/false arrow-judge
+		useradd -M -r -s /bin/false arrow-judge
 	fi
     ;;
 

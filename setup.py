@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(
 	name = 'arrow-judge',
@@ -12,5 +12,6 @@ setup(
 	url = 'https://github.com/hiromu/arrow-judge',
 	license = 'MIT',
 	package_dir = {'arrow_judge': 'src'},
-	packages = ['arrow_judge']
+	packages = ['arrow_judge'],
+	install_requires = ['python-daemon']
 )
